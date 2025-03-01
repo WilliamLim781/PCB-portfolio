@@ -5,36 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PCB Portfolio</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- You can remove this if Tailwind is bundled in the CSS -->
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <header class="bg-blue-600 text-white py-6 text-center">
-        <h1 class="text-4xl font-bold">My PCB Design Portfolio</h1>
-        <p class="text-lg">Showcasing my PCB layouts, simulations, and projects</p>
+<body>
+    <header>
+        <h1>My PCB Design Portfolio</h1>
+        <p>Showcasing my PCB layouts, simulations, and projects</p>
     </header>
     
-    <main class="max-w-4xl mx-auto py-10">
+    <main>
         <section>
-            <h2 class="text-2xl font-semibold mb-4">Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white shadow-md rounded-lg p-4">
+            <h2>Projects</h2>
+            <div class="grid">
+                <div class="project-card">
                     <img src="assets/images/project1.png" alt="Project 1" class="rounded">
-                    <h3 class="text-xl font-semibold mt-2">Project 1</h3>
-                    <p class="text-gray-700">Brief description of the project.</p>
-                    <a href="projects/project1.html" class="text-blue-600 mt-2 inline-block">View Project →</a>
+                    <h3>Project 1</h3>
+                    <p>Brief description of the project.</p>
+                    <a href="projects/project1.html">View Project →</a>
                 </div>
-                <div class="bg-white shadow-md rounded-lg p-4">
+                <div class="project-card">
                     <img src="assets/images/project2.png" alt="Project 2" class="rounded">
-                    <h3 class="text-xl font-semibold mt-2">Project 2</h3>
-                    <p class="text-gray-700">Brief description of the project.</p>
-                    <a href="projects/project2.html" class="text-blue-600 mt-2 inline-block">View Project →</a>
+                    <h3>Project 2</h3>
+                    <p>Brief description of the project.</p>
+                    <a href="projects/project2.html">View Project →</a>
                 </div>
             </div>
         </section>
     </main>
     
-    <footer class="text-center py-6 bg-gray-200 mt-10">
-        <p>© 2025 Your Name | <a href="https://github.com/yourgithub" class="text-blue-600">GitHub</a></p>
+    <footer>
+        <p>© 2025 Your Name | <a href="https://github.com/yourgithub">GitHub</a></p>
     </footer>
 </body>
 </html>
