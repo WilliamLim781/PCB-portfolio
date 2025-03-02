@@ -1,5 +1,99 @@
-body{
-    margin: 0;
-    background: pink;
-    text-align: center;    
+body {
+    background-color: #09122C; /* bg-gray-100 */
+    color: white; /* text-gray-900 */
+    font-family: 'Arial', sans-serif;
+}
+
+header {
+    background-color: #2563eb; /* bg-blue-600 */
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.25rem; /* text-4xl */
+    font-weight: bold; /* font-bold */
+    color: white;
+}
+
+p {
+    font-size: 2rem; /* text-lg */
+    color: white;
+   
+}
+
+main {
+    max-width: 72rem; /* max-w-4xl */
+    margin: 0 auto;
+    padding: 2.5rem 0; /* py-10 */
+}
+
+section h2 {
+    font-size: 2.5rem; /* text-2xl */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 1rem; /* mb-4 */
+}
+section h3{
+    font-size: 2.5rem; /* text-2xl */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 1rem; /* mb-4 */
+    margin-left: 5rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem; /* gap-6 */
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+    }
+}
+
+.project-card {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+    border-radius: 0.375rem; /* rounded-lg */
+    padding: 1rem; /* p-4 */
+    
+}
+
+.project-card img {
+    border-radius: 0.375rem; /* rounded */
+}
+
+.project-card a {
+    color: #2563eb; /* text-blue-600 */
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem 0; /* py-6 */
+    background-color: #2563eb; /* bg-gray-200 */
+    margin-top: 2.5rem; /* mt-10 */
+}
+
+.paragraph{
+    font-size: 2.125rem; /* text-lg */
+    color: white(0, 0, 0);
+    padding: 2rem;
+}
+
+summary{
+    font-size: 2.125rem; /* text-lg */
+    color: white(0, 0, 0);
+    padding: 2rem;
+
+}
+
+.center{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.5rem;
 }

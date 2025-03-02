@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1> DAQ(Data Acquisition) </h1>
+        <p> test paragraph </p>
+    </header>
+    <main> 
+        <section>
+            <h2> DAQ Overview</h2>
+            <div class="paragraph">
+                The DAQ project was a project that supports a FSAE(Formula SAE) style car. The DAQ would acquire data from sensors that were connected to the car and convert it to a csv file that can be used 
+                to interpret data from sensors. The project was a based on a stm32 f4(f429) that would breakout to multiple different types of communication protocols that consisted of I2C,SPI,UART,CAN,and USB
+            </div>            
+        </section>
+        <section>
+            <details>
+                <summary>Schematic overview</summary>
+                <img src ="images/DAQpage1Schematic.PNG" class = "center" width=" 50%" height=" 75%">
+                <div class = "rounded">
+                    <p>The first page of the schematic consisted of essentials needed to get the custom stm32 board working. This primarily included boot0,NRST,VCAP_1, and VCAP_2. </p>
+                    <h2>NRST</h2>
+                        <p>the NRST pin is the reset pin of the MCU and is connected to a push button connected to ground so the user can reset the MCU if need be. There is also a debouncing capacitor connected to the pushbutton to ensure 
+                            that the button press isn't accidentally registered again after the release of the <button class=""></button>
+                        </p>
+                    <h2>BOOT0</h2>
+                        <p> this is the pin that selects whether or not the MCU is going to boot from flash memory or from system memory. a SPDT is used to select how to MCU will boot.
+                        </p>
+                    <h2>Vcap</h2>
+                        <p>These pins are for the MCU's internal voltage regulator and are used to filter the regulator. The recommend values from the stm32f429 datasheet were used for these. Which was 2.2uF with the additional specification that the ESR of the capacitors where less than 2 ohms
+                        </p>
+                    <h2>HSE(high speed external) oscillator</h2>
+                        <img src ="images/DAQHSEPNG.PNG" class = "center" width="75%" height=" 50%">
+                        <p>the HSE utilizes a Pierce oscillator design, however, the inverter and the resistor of the circuit is incorporated inside the MCU. The only parts that need to be designed and values picked 
+                            are the two capacitors and the crystal in the Pierce oscillator. a 0 ohm resistor is added to adjust current levels if needed. the values of the capacitor were based on the stray capacitance(which was assumed to be 5 pf) and the load capacitance of crystal that was chosen
+                            below is the equation used to calculate c1 and c2 where Cs is stray capacitance and Cl is load capacitance which was taken from stm32's AN2867 application notes.
+                        </p>
+                        <img src = "images/DAQEquation.PNG" class ="center">
+                    <h2>Decoupling capacitor</h2>
+                        <p>The number of decoupling capacitors and their value were based on the recommendations from the stm32F429 datasheet which basically recommended one decoupling capacitor for every
+                            physical VCC pin and a additional bulk decoupling capacitor. All decoupling capacitors were 100nF with the exception of bulk decoupling capacitors which was 4.7uF for digital Vcc pins and 
+                            1uF for the Analog Vcc pin
+                        </p>
+                    <h2>Power</h2>
+                        <img src="images/DAQPower.PNG" class ="center">
+                        <p> The Power section is rather simple as the PCB only needs 5v and 3.3v power is taken from a USB then the Vbus is connected to a AMS1117 voltage regulator which is a fixed 3.3v LDO. Decoupling capacitors are used both the input and output of the AMS1117. This particular setup for the AMS117 was take from a example setup of the AMS1117 from the datasheet. 
+                            5v from the USB would be used primarily for the CAN transceiver IC and would also be paired with connectors for digital communications like I2C,UART,SPI,etc to provide power to sensors or other devices hooked to these communication protocols. 3.3v would be used to power the MCU and control MCU functions like BOOT0 or the pullup resistors on I2C lines.Note that the use a 2.2k resistor for the current limiter resistor is based on the fact that 
+                            I previously used 2.2k resistor in the schematic so reused part values to make creating the BOM less of a headache. 
+                        </p>
+                    <h2>communication</h2> 
+                        <img src ="images/DAQConnectors.PNG" class = "center" width=" 100%" height=" 75%" ><i> above is a picture of the whole schematic page for communcation for the DAQ </i></img>
+                        <h2>I2C</h2>
+                            <p>Due to I2C being an open-drain configuration for both the SDA and SCL lines pull up resistors are needed to bring the logic level back up to Vcc. With that said, the value of the pull-up resistor will impact how fast the I2C line will be able to oscillate so picking a proper value pull-up resistor is necessary to ensure that the SDA and SCL lines operate at their given frequency. using the tried and true method of googling values for pull-up resistors I settled with 2.2k resistors.
+                                I came to this conclusion simply because i wasn't sure if the I2C lines would be used in standard mode(100 kbit/s) or in fast mode(400 kbit/s) so to ensure compatibility with both i settled with a lower value of resistance. However, the drawback would be that there would be more power dissapted by the resistors and lead to a less power efficient I2C line however I think this tradeoff was worth it guaranteed compatibility with either standard or fast mode I2C.
+                            </p>
+                        <h2>USB</h2>
+                            <p>Used USB A connector to send data packets. USB was routed via differential pairs with a differential impedance of 90 Ohms this particular revision of the DAQ doesn't have ESD protection however in other revision the USB data lines would go through a ESD Protection IC first then into the USB data lines on the MCU. Vbus would be connected to the voltage regulator, ID pin would not be connected and both shield and gnd would be connected to ground.  </p>
+                        <h2>CAN</h2>
+                            <img src ="images/DAQCAN.PNG" class ="center" width = "75%" height="50%">
+                            <p> CAN is wired similar to the USB connector but instead has a 120 ohm termination resistor on the begining and end of the CAN bus. in addition, the differential pairs would also have a differential impedance of 120 Ohms. This CAN differential pair would then connect to a TJA1051 CAN transciever then into the MCU </p>
+                </div>
+            </details>
+            <details>
+                <summary> PCB layout</summary>
+
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>
