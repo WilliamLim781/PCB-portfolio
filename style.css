@@ -1,6 +1,6 @@
 body {
     background-color: #09122C; /* bg-gray-100 */
-    color: #1f2937; /* text-gray-900 */
+    color: white; /* text-gray-900 */
     font-family: 'Arial', sans-serif;
 }
 
@@ -18,8 +18,9 @@ h1 {
 }
 
 p {
-    font-size: 2.125rem; /* text-lg */
+    font-size: 2rem; /* text-lg */
     color: white;
+   
 }
 
 main {
@@ -29,9 +30,15 @@ main {
 }
 
 section h2 {
-    font-size: 1.5rem; /* text-2xl */
+    font-size: 2.5rem; /* text-2xl */
     font-weight: 600; /* font-semibold */
     margin-bottom: 1rem; /* mb-4 */
+}
+section h3{
+    font-size: 2.5rem; /* text-2xl */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 1rem; /* mb-4 */
+    margin-left: 5rem;
 }
 
 .grid {
@@ -67,6 +74,26 @@ section h2 {
 footer {
     text-align: center;
     padding: 1.5rem 0; /* py-6 */
-    background-color: #e5e7eb; /* bg-gray-200 */
+    background-color: #2563eb; /* bg-gray-200 */
     margin-top: 2.5rem; /* mt-10 */
+}
+
+.paragraph{
+    font-size: 2.125rem; /* text-lg */
+    color: white(0, 0, 0);
+    padding: 2rem;
+}
+
+summary{
+    font-size: 2.125rem; /* text-lg */
+    color: white(0, 0, 0);
+    padding: 2rem;
+
+}
+
+.center{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.5rem;
 }
