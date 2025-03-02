@@ -67,7 +67,22 @@
             </details>
             <details>
                 <summary> PCB layout</summary>
-
+                <img src = "images/DAQ.PNG" width = "100%" height ="75%">
+                <h2>Physical Layot</h2>
+                    <p> the PCB was a 4 layer PCB that had a stack up of signal, power, ground, signal (the order is from top to bottom layer). The power plane is separated into two different parts for 3.3v components and 5v components. Majority of the signals are routed on the top layer with the bottom signal layer used primarily when the signals couldn't be routed from the top layer. There were some attempts to isolate analog signals from digital signals with all analog signals being in a section isolated from the other digital communications.However there are some GPIO pins next to the the Analog pins however these pins are intended for error handling and statues(i.e error LEDs and Status LEDs). </p>
+                <h2>Connectors pinout</h2>
+                    <p> molex connectors were used primarily due to their locking nature and size. I wasn't sure how difficult it would be to trouble shoot the board so I used larger Molex connectors to make pins larger and more accessible for trouble shooting. in addition each molex connector is 6 pins 5v would always be found on pin 4 and ground would always be on pin 6 of the connector.</p>
+                <h2>Differential pairs</h2>
+                    <p> since the board contained both USB and CAN differential pairs were required to route both of these connectors. I didn't find too much information on how to calculte differential pair measurments but so I wend ahead and used KiCad's build in transmission line calculator and measure the width and spacing for a coupled microstrip line to find the differential impedance required for USB and CAN. since I'm using Fr4
+                        as my PCB substrate so i used 4.5 as the relative permitivity constant. USB differential impedance was set to 90 Ω and CAN bus was 120 Ω impedance.
+                    </p>
+                <h2>Power</h2>
+                    <p>Power came from a USB C connector that fed to an ams1117 fixed 3.3 LDO voltage regulator. All the routing from usb and voltage regulator are done on the top signal layer then the use of vias are used to connect them voltages to their respective plane in the power plane. In hindsight maybe the power section was a little too close to the analog section but the use of a voltage regulator didn't bring too much noise to the system.
+                    </p>
+                <h2>decoupling capacitor and oscillators</h2>
+                    <p>due to recommendation from the data sheet both the oscillator and decoupling capacitors were routed first they had requirements of needing to be rather close to the MCU. With that said, decoupling capacitors were place very close to their corresponding Vcc pin on the MCU and had vias that connect to 3.3v and gnd right next to the which is based on the given example from the stm32 AN4938 application note
+                    </p>
+                    <img src ="images/DAQDecouplingCapacitor.PNG" width = "100%" height="75%">
             </details>
         </section>
 
