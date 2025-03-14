@@ -13,14 +13,18 @@
         <section>
             <h2> Distortion Pedal overview</h2>
             <div class="paragraph">
-                The project was for a simple distortion pedal that could be used as part of a signal chain for an electric guitar. The distortion pedal would connect to the output of the guitar, distort the signal, and then output that distored signal to the next 
-                part of the signal chain or into a amplifier.
+                The project was for a simple distortion pedal powered by a 9 volt barrel jack and would be used as part of a signal chain for an electric guitar. The distortion pedal would connect to the output of the guitar, distort the signal, and then output that distored signal to the next 
+                part of the signal chain or into a amplifier. 
             </div>            
         </section>
         <details>
             <summary>Schematic Overview</summary>
             <div class = "rounded">
-                <h2>Op Amp Bia</h2>
+                <h2>Op Amp Bias</h2>
+                    <p>
+                        <img src = "images/DIST_OPAMP_Bias.PNG" class = "center" width=" 50%" height=" 50%">
+                        since the circuit is powered by a 9v source I use an opamp to buffer the voltage source and create a 4.5v bias that I can use for the input of the distortion pedal to center the audio signal in the middle of 9v range decoupling capacitors are used to remove noise. the use of an op amp isn't necessary but I choose to use it as I wanted to use a 8 dip op amp  which typically contains two different op amps. In addition the use of a voltage divider to spit the voltage can isn't the most secure way to obtain 4.5v as resistance changes could potentially change the output voltage. The use of the op amp act as a buffer so the 4.5 voltage is isolated from any potential resistance changes when connecting 4.5v to another system
+                    </p>
             </div>
         </details>
     </main>
