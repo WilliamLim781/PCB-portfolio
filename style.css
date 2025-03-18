@@ -1,4 +1,6 @@
 body {
+    min-width: 100%;
+    min-height: 100%;
     background-color: #09122C; /* bg-gray-100 */
     color: white; /* text-gray-900 */
     font-family: 'Arial', sans-serif;
