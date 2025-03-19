@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type ="text/css"href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Wien-Bridge Oscillator</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Wien-Bridge Overview</h2>
+                <p>
+                    S basic RC oscillator that doesn't require a external input to oscillate. Instead, the oscillation occurs due to a mix a positive and negative feedback in the circuit.
+                </p>
+        </section>
+        <section>
+                <details>
+                    <summary>schematic</summary>
+                        <h2>power</h2>
+                            <img src ="images/WB_Power.PNG"  class="center" width="75%" height="50%">
+                            <p>
+                                The circuit is powered by a 9v so a bias of 4.5v is created with a voltage divider and a buffer so the oscillation would be centered at 4.5v. For simulation purposes I also added a sine wave to add noise to the 9V power supply to see how it would impact the bias voltage.
+                            </p> 
+                        <h2>Wien-Bridge Circuit</h2>
+                            <img src="images/WB_WienCircuit.PNG" class="center" width="75%" height="50%">       
+                            <p>
+                                Wien-Bridge consists of two RC networks, one in parallel and one in series. The values of both the resistor and capacitors in each RC network are the same(are very similar considereing tolerances). This allows the two RC networks to have the same Resonant Frequency (Equation = 1/(2*pi*R*C)) forming a bandpass filter with one resonant frequency. The diodes are used as a way
+                                to apply a controlled compression to the amplifier output.
+                            </p>           
+                        <h2>Amplitude Adjustment</h2>
+                            <img src="images/WB_gain.PNG" class="center" width="75%" height="50%">
+                            <p>
+                                after the output of the wienbridge the signal is then goes through a inverting amplifier so I can adjust the amplitude of the signal. Note that This simulation is using a gain of 1 as a place holder the actual values would be 10k for input resistance and 100 in series with a 10k potentiometer in the feeback resistance. The choice to go with an inverting amplifer came from the idea that the output of the signal is round 2v peak-to-peak and I would like for the ability to decrease the signal to a smaller amplitude which was possible if I went with a 
+                                inverting amplifier topology rather than a non-inverting topology.
+                            </p>      
+                </details>
+                <details>
+                    <summary>PCB</summary>
+                </details>
+        </section>
+    </main>
+</body>
+</html>
