@@ -19,7 +19,7 @@
         </section>
         <section>
                 <details>
-                    <summary>schematic</summary>
+                    <summary>Schematic </summary>
                         <h2>power</h2>
                             <img src ="images/WB_Power.PNG"  class="center" width="75%" height="50%">
                             <p>
@@ -39,7 +39,25 @@
                             </p>      
                 </details>
                 <details>
+                    <summary>Simulation</summary>
+                        <h2>Power</h2>
+                            <P>
+                                Power comes from a 9v source and in the simulation a siganl with 1v peak-to-peak (was too lazy to change it to something more similar to real noise) was added in series with the 9v to simulate some noise. the use of a decoupling capacitor in the voltage divider was used to reject the noise that comes from the simulated noise. the draw back can be seen in the picture below. The voltage takes time to center it itself to 4.5v as the capacitor prevents the voltage from rising too fast . Decreasing the capacitor value would allow for the bias voltage to rise to 4.5v faster but at the cost of less of the noise being rejected.
+                            </P>
+                            <img src="images/WB_BiasTime.PNG"class="center" width="75%" height="75%">
+                        <h2>freqeuncy simulation</h2>
+                            <img src ="images/WB_freq_sim.PNG" class="center" width="75%" height="75%">
+                            <p>
+                                circuit simulation gives an output signal of 1.27v amplitude with a frequency of 14.39Kh when resistor value is 100 ohms and capacitor is 100 nF. When computing the resonant frequency of the circuit the value comes out to be 15.91 Khz (1/(2*pi *100 *100*10^9)). Which gives about a 10% difference from the the simulated value from the calculated value .
+                            </p>
+                </details>
+                <details>
                     <summary>PCB</summary>
+                        <img src="images/WB_PCB.PNG" class="center" width="75%" height="50%">
+                        <p>
+                            board was a 2 layer board with a top layer as the signal layer and the second layer a ground plane. The top plane would also contain a ground copper field and be connected to the second layer with via stiching. 2.54mm pin headers were used for the potentiometers, power input,and output of the circuit. pinheaders weren't actually planned it just that that form factor allow external wires to be soldered easily. Due to concern for the need to debug (mistakes happen) i opted to use 0603 smd components and 8 dip for the op amps that way I need to improvise some connections I can do so easier with these bigger parts. the PCB would 
+                            have 2 potentiometers one that connected in series of the feedback resistor for the inverting amplifer so I could have a variable gain and the second would be a dual potentiometer that is connect to the two resitors in the RC networks.
+                        </p>
                 </details>
         </section>
     </main>
