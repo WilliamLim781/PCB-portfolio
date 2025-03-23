@@ -30,12 +30,12 @@
                         <p>
                             for simulations purpose I used a 9 DC supply with com decoupling capacitors and voltage divder resistors to split the voltage in half. The actual circuit would incorporate an op amp buffer for the voltage divider mostly because I have an extra op amp but also to prevent changes in resistance that would change how the voltage divder behaved.
                         </p>
-                    <h3>non-inverting op-amp</h3>
+                    <h2>non-inverting op-amp</h2>
                         <img src ="images/DIST_opamp.PNG" class ="center" width ="50%" height="50%">
                         <p>
                             the distortion pedal utilizes a non-inverting topology with a variable gain as the potentiometer is connected in series with the feedback loop. This particular simulation would have a gain range from 2 - 4 (equation is 1 + R2/R1). There is also a coupling capacitor both in the input and output of the op amp to remove DC offsets going in and out of the op amp.
                         </p>
-                    <h3>clipping diode and volume control</h3>
+                    <h2>clipping diode and volume control</h3>
                         <img src="images/DIST_clipping_and_volume_sim.PNG" class="center" width="75%" height="50%">
                         <p>
                             The diodes are arranged at the output of the op-amp and are used to clip the signal after thee signal is amplified. This particular pair of diodes is known as "hard clipping" diodes. A soft clipping version would see the diodes in the feeback system of the op-amp. The choice of diodes is practically just tast as different diodes would contain differt forward voltages and clip the signal differently becuase of that. This particular circuit uses the 1n4148 diodes are they are 
