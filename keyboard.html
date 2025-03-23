@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type ="text/css"href="style.css">
+    <title>keyboard</title>
+</head>
+<body>
+    <header>
+        <h1>keyboard</h1>
+            <p> 
+                simple keyboard circuit using ATmega32U4-A as the main processor
+            </p>
+    </header>
+    <main>
+        <section>
+            <h2>project overview</h2>
+                <p>
+                    A compact and customizable modular numpad featuring mechanical switches and powered by an ATmega32U4 microcontroller. Designed for to be compatible with either QMK or via support (open source firware for keyboard).
+                </p>
+        </section>
+        <details>
+            <summary>Schematic</summary>
+                <h2>ATmega32U4-A</h2>
+                    <img src="images/KB_arduino.PNG"  class ="center" width="75%" height = "50%">
+                    <p>
+                        The ATmega32U4 serves are the main processors of the Keyboard and handles the communciation between the computer and the keyboard,key press detection and programing of the board. In addition, the board also features a I2C connection that can be used for peripherals like OLED screens to further customize the board. 
+                    </p>
+                <h2>communication</h2>
+                    <img src ="images/KB_USB.PNG" class ="center" width="75%" height = "50%">
+                    <p>
+                        the keyboard will connect to the computer using usb-c. 5.1k pulldown resistors are used for both the cc1 and cc2 pins to set the keyboard as UFP(Upstream Facing Ports). in addition, there is also an ESD protection for the usb to prevent and ESD from getting past the usb and into the other parts of the circuit.
+                    </p>
+                <h2>Programming</h2>
+                    <img src="images/KB_JTAG.PNG" class ="center" width="75%" height = "50%">
+                    <p>
+                        the board is programmed using JTAG and uses a 10 pin configuration for JTAG. The 10 pins were not something that I made but rather something that I took from a 10 pin JTAG pinout I found when I was researching JTAG. The pinout that I follwed can be seen below.
+                        <img src="images/KB_10PinJTAG.png" class ="center" width="75%" height = "50%">
+                    </p>
+                <h2>Crystal Oscillator</h2>
+                    <img src="images/KB_crystal.PNG" class ="center" width="75%" height = "50%">
+                    <p>
+                        the ATmega32U4 contains pins for an external oscillator. I decided to add a 16 Mhz external oscillator for the MCU. Capacitor values were taken from the recommendation values given from the datasheet.
+                    </p>
+                <h2>Switch Matrix</h2>
+                    <img src ="images/KB_swithmatrix.PNG" class ="center" width="75%" height = "50%">
+                    <p>the switch matrix uses rows(r) and columns(c) to detect when a switch is pressed. Each row(r1-r4) and each column(c1-c4) are connected to pins of the MCUs GPIO pins. When a swtich is pressed it connects a column pin with a row pin and that way the key press can be detected. the column pins acts as a GPIO output and the rows act as a GPIO input.
+                        only one colum pin is set active at a time so the matrix can precisely detect which row of which column was pressed. The Column pins rotate in a round robin fashion for which pin is set high. When rotating between columns is fast enough, it becomes basically simultaneous for each pin being set HIGH.
+                    </p>
+        </details>
+        <details>
+            <summary>PCB</summary>
+                <img src="images/KB_PCB.PNG" class ="center" width="75%" height = "50%">
+                <p>
+                    the PCB was rather simple 2 layer board. Switches were set in an oreintation indicative of a regular numpad most of the other parts are set at the top of the PCB. The 10 pin JTAG and the I2C connectors used 2.54 mm pin headers for their footprint to make connecting with them easy.
+                </p>
+                <img src="images/KB_closeup.PNG" class ="center" width="75%" height = "50%">
+                <p>
+                    this is a close up of the ATmega32U4 and all the relevant connections. Differential pair width and spacing were calculated using the built in Kicad calculator which wasn't the best but made it rather easy to width ans spacing values. I will not that there is no skew on the differential pairs so with future iterations that would be a consideration to make the differential pair more accurate.
+                </p>
+        </details>
+    </main>    
+</body>
+</html>
